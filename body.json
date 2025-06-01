@@ -1,0 +1,73 @@
+{
+    "body" : [
+        {
+            "type": "Recent Experiences",
+            "bodyDesc": [
+                {
+                    "title": "Accenture",
+                    "shortDesc": "Business Architecture Analyst",
+                    "link": "https://www.accenture.com/us-en",
+                    "timeline": "September 2023 - Present",
+                    "description": [
+                        "Building high quality distributed backend systems for financial services clients.",
+                        "Tools: Java, Spring Boot, Spring Batch, Apache Kafka, Oracle SQL and Redis."
+                    ]
+                },
+                {
+                    "title": "Sailpoint Technologies",
+                    "shortDesc": "Devops Engineer Intern",
+                    "link": "https://www.sailpoint.com/",
+                    "timeline": "June 2022 - August 2022",
+                    "description": [
+                        "Contributing to the development of internal service tools.",
+                        "Tools: Python, Flask, Docker, Kubernetes, AWS, and Jenkins."
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Projects",
+            "bodyDesc": [
+                {
+                    "title": "Number to Words",
+                    "link": "https://github.com/kennyrobert88/NumberToWords",
+                    "shortDesc": "Java Library to convert numbers to words in Indonesian Language",
+                    "description": [
+                        "Utilizing Greedy Algorithm to convert numbers to words in Indonesian Language.",
+                        "Technologies: Java, JUnit, Gradle, GitHub Actions, Mockito."
+                    ]
+                },
+                {
+                    "title": "College Projects",
+                    "link": "https://github.com/kennyrobert88/CS61A",
+                    "shortDesc": "Building games and applications using Python",
+                    "description": [
+                        "Utilizing python and python GUI to build various games."
+                    ]
+                },
+                {
+                    "title": "Portfolio Website",
+                    "link": "https://github.com/kennyrobert88/kennyrobert.io",
+                    "shortDesc": "Personal Portfolio Website",
+                    "description": [
+                        "Portfolio website just for reference."
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Education",
+            "bodyDesc": [
+                {
+                    "title": "UC Berkeley",
+                    "link": "https://www.berkeley.edu/",
+                    "shortDesc": "BS. in Electrical Engineering and Computer Science",
+                    "timeline": "Graduated: May 2023",
+                    "description": [
+                        "Related Coursework: Data Structures, Database Systems, Software Engineering, Embedded Systems."
+                    ]
+                }
+            ]
+        }
+    ]
+}
