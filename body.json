@@ -34,7 +34,7 @@
                     "shortDesc": "Java Library to convert numbers to words in Indonesian Language",
                     "description": [
                         "Utilizing Greedy Algorithm to convert numbers to words in Indonesian Language.",
-                        "Technologies: Java, JUnit, Gradle, GitHub Actions, Mockito."
+                        "Technologies: Java, JUnit, Gradle, GitHub Actions, SonarQube."
                     ]
                 },
                 {
