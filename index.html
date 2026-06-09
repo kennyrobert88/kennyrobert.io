@@ -8,6 +8,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* ── Dark mode (default) ── */
     :root {
       --bg:       #0d1117;
       --surface:  #161b22;
@@ -17,9 +18,28 @@
       --text:     #e6edf3;
       --muted:    #8b949e;
       --tag-bg:   #1f2937;
+      --nav-bg:   rgba(13,17,23,.88);
+      --shadow:   rgba(0,0,0,.4);
+    }
+
+    /* ── Light mode ── */
+    [data-theme="light"] {
+      --bg:       #ffffff;
+      --surface:  #f6f8fa;
+      --border:   #d0d7de;
+      --accent:   #0969da;
+      --accent2:  #1a7f37;
+      --text:     #1f2328;
+      --muted:    #656d76;
+      --tag-bg:   #eaeef2;
+      --nav-bg:   rgba(255,255,255,.88);
+      --shadow:   rgba(0,0,0,.12);
     }
 
     html { scroll-behavior: smooth; }
+
+    /* smooth theme transition */
+    body, nav, .card, .timeline-item, .skills-box { transition: background .25s, border-color .25s, color .25s; }
 
     body {
       background: var(--bg);
@@ -34,7 +54,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(13,17,23,.88);
+      background: var(--nav-bg);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 0 2rem;
@@ -185,7 +205,7 @@
     .card:hover {
       border-color: var(--accent);
       transform: translateY(-4px);
-      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+      box-shadow: 0 8px 32px var(--shadow);
     }
     .card:hover::before { opacity: 1; }
     .card-header {
@@ -366,6 +386,20 @@
     <li><a href="#education">Education</a></li>
     <li><a href="https://github.com/kennyrobert88" target="_blank" rel="noopener">GitHub</a></li>
   </ul>
+  <button id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme" style="
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: .5rem;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; height: 36px;
+    font-size: 1.1rem;
+    transition: background .2s, border-color .2s, transform .15s;
+    flex-shrink: 0;
+  ">🌙</button>
 </nav>
 
 <!-- ── Hero ── -->
@@ -606,5 +640,34 @@
   </p>
 </footer>
 
+<script>
+  const toggle = document.getElementById('theme-toggle');
+  const html   = document.documentElement;
+
+  // Load saved preference, or fall back to OS preference
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initDark = saved ? saved === 'dark' : prefersDark;
+
+  function applyTheme(dark) {
+    if (dark) {
+      html.removeAttribute('data-theme');
+      toggle.textContent = '🌙';
+    } else {
+      html.setAttribute('data-theme', 'light');
+      toggle.textContent = '☀️';
+    }
+  }
+
+  applyTheme(initDark);
+
+  toggle.addEventListener('click', () => {
+    const isDark = !html.hasAttribute('data-theme');
+    applyTheme(!isDark);
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    toggle.style.transform = 'scale(.85)';
+    setTimeout(() => toggle.style.transform = '', 150);
+  });
+</script>
 </body>
 </html>
