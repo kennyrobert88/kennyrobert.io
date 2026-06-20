@@ -268,6 +268,14 @@
       transition: color .2s, border-color .2s;
     }
     .repo-pill:hover { color: var(--accent); border-color: var(--accent); }
+    /* stretched-link pattern: overlay covers the whole card for the primary link */
+    .card-stretched-link {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+    /* keep the backend pill clickable above the overlay */
+    .card .repo-pill { position: relative; z-index: 2; }
 
     /* ── Experience / Education ── */
     .timeline-list { display: flex; flex-direction: column; gap: 1.25rem; }
@@ -373,11 +381,11 @@
       display: block;
       border-radius: .4rem;
     }
-    /* show correct chart per theme */
-    .gh-dark  { display: block; }
-    .gh-light { display: none; }
-    [data-theme="light"] .gh-dark  { display: none; }
-    [data-theme="light"] .gh-light { display: block; }
+    /* show correct chart per theme (specificity must beat ".gh-chart-card img") */
+    .gh-chart-card img.gh-dark  { display: block; }
+    .gh-chart-card img.gh-light { display: none; }
+    [data-theme="light"] .gh-chart-card img.gh-dark  { display: none; }
+    [data-theme="light"] .gh-chart-card img.gh-light { display: block; }
 
     /* ── Footer ── */
     footer {
@@ -521,11 +529,13 @@
     </a>
 
     <!-- Analy (combined) -->
-    <a class="card" href="https://github.com/kennyrobert88/analy" target="_blank" rel="noopener">
+    <div class="card">
+      <!-- stretched overlay link: makes the whole card open the frontend repo -->
+      <a class="card-stretched-link" href="https://github.com/kennyrobert88/analy" target="_blank" rel="noopener" aria-label="Analy frontend repository"></a>
       <div class="card-header">
         <div class="card-icon purple">📊</div>
         <div style="display:flex;align-items:center;gap:.5rem;">
-          <a class="repo-pill" href="https://github.com/kennyrobert88/backend-analy" target="_blank" rel="noopener" onclick="event.stopPropagation()">backend ↗</a>
+          <a class="repo-pill" href="https://github.com/kennyrobert88/backend-analy" target="_blank" rel="noopener">backend ↗</a>
           <svg class="card-link-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
             <path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010
                  1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0
@@ -548,7 +558,7 @@
         <span class="tag">PostgreSQL</span>
         <span class="tag">Docker</span>
       </div>
-    </a>
+    </div>
 
   </div>
 </section>
